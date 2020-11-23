@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         capitais = new String[]{
-                "Cutiriba",
+                "Curitiba",
                 "São Paulo",
                 "Vitória",
                 "Belo Horizonte",
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             btn1.setEnabled(true);
             TextView output = findViewById(R.id.Resposta);
             output.setText("");
+            EditText input = findViewById(R.id.ChuteCapital);
+            input.setText("");
         }
         else if(count == 5){
             Button btn1 = (Button) findViewById(R.id.confirmar);
@@ -93,18 +95,20 @@ public class MainActivity extends AppCompatActivity {
         TextView output = findViewById(R.id.Resposta);
         TextView pont = findViewById(R.id.pontuacao);
         Button btn1 = (Button) findViewById(R.id.confirmar);
-        btn1.setEnabled(false);
+
         String capital = capitais[num];
         if(input.length() == 0){
-            Toast.makeText(this, "Forneça a Capital", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Informe a Capital!", Toast.LENGTH_SHORT).show();
         }
-        else if (input.getText().toString().equals(capital)){
-            output.setText("Voce Acertou!!!");
+        else if (input.getText().toString().toLowerCase().equals(capital.toLowerCase())){
+            output.setText("Você Acertou!");
             pontuacao = pontuacao + 10;
             pont.setText(String.valueOf(pontuacao));
+            btn1.setEnabled(false);
         }
         else{
-            output.setText("Voce Errou !!! Capital Correta: "+ capital);
+            output.setText("Você Errou! \nResposta correta: "+ capital);
+            btn1.setEnabled(false);
         }
     }
 }
